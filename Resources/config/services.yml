@@ -1,0 +1,17 @@
+
+parameters:
+  extension.manager.class: Kamran\PlusAsseticBundle\Twig\Extension\AssetManagementExtension
+  helper.manager.class: Kamran\PlusAsseticBundle\Templating\Helper\AssetManagementHelper
+
+services:
+
+  asset_management.twig.extension:
+    class: %extension.manager.class%
+    tags:
+      - { name: twig.extension }
+
+  asset_management.templating.helper:
+    class: %helper.manager.class%
+    arguments: [@service_container]
+    tags:
+      - { name: templating.helper , alias: assetmanagement }
